@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{B72617F7-3332-4A02-919E-E4E559DA3A62}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>WrenchMG</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Action.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ActionManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CallbackAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ChangeColorToAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DelayAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EndlessMoveByAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Engine.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)InstantAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LineBatch.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LineNode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MoveByAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MoveToAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Node.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OBB.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RangeF.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RectangleExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RotateByAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RotateToAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ScaleByAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ScaleToAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scene.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SceneTransition.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SequenceAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Sprite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SpriteAnimation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SpriteNode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TextNode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TimedAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TransitionCrossFade.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TransitionFade.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TransitionShrink.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TransitionShrinkGrow.cs" />
+  </ItemGroup>
+</Project>
