@@ -1,0 +1,23 @@
+﻿-Moved similar items into kindred namespaces. TimedActions, InstantActions, Transitions, etc
+-Removed "ActionDelegate" from CallbackAction. Replaced with built-in System.Action<Node> instead.
+-Removed the delegates in Engine.cs for OnLoadContent(), OnSuspend(), OnResume(), and just use the built-in System.Action delegate - which does the same thing.
+-Changed any protected or public members to be PascalCase with no abbrev's - and fixed any private members to _camelCase.
+-Changed any language macros (int, string, float) to CLS-types of Int32, String, Single, etc (preference, but it does help with other developers coming from other .NET languages to stay CLS-neutral)
+-In LineBatch renamed _set_data to _initialized. Booleans should be question which answers in the affirmative.
+-In LineBatch changed EmptyTexture to a public, read-only property. As a public field, an outside caller could set that to null - breaking your static class. This way, only the Initialize() method can set it, and outside callers can view it.
+
+-In Action, not sure if this is appropriate, but I changed it to be an abstract class - because that's what it seems like it was doing. From that, I changed the class a little to make it more like an abstract class.
+-In Action, changed Target to be a simple property, since no other members were attempting to change state of the private, backing field.
+
+-In CallbackAction changed OnComplete to a public, read-only property. As a public field, an outside caller could set that to null - breaking your static class. This way, only the Initialize() method can set it, and outside callers can view it.
+
+-In TimedAction, changed the "seconds" that is passed-in to be a TimeSpan. That way, you can easily interact with the timespan that is within GameTime.
+
+-In Scene, added constructor overload that lets user (or unit test) inject in the sprite batch or take the default.
+-In Scene, changed AddNode to return void. Since it returns the same, unaffected node - makes the API confusing.
+-In Scene, added argument validation and also a check to make sure the node is in the collection first. If it isn't, throw an exception.
+-In Scene, changes Nodes() method to return IEnumerable<Node> so that outside callers can't secretly add, remove, or clear the collection. This just gives them read-only access to the list.
+
+-In SceneTransition, removed "sb" SpriteBatch because it already is available from the base clas.
+-In SceneTransition, removed "g" Engine, because a more accurate source of the GraphicsDevice is from the SpriteBatch.
+-In SceneTransition, renamed "targetScene" and "targetTarget" to "destinationScene" and "destinateionTarget" because of the confusing name conflict.
