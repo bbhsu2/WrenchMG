@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8A124964-4F5E-4FEC-A6C1-3E372B7D55F3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SoundAxis.WrenchMG</RootNamespace>
+    <AssemblyName>SoundAxis.WrenchMG</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile5</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Action\Action.cs" />
+    <Compile Include="Action\ActionManager.cs" />
+    <Compile Include="Action\Instant\CallbackAction.cs" />
+    <Compile Include="Action\Timed\ChangeColorToAction.cs" />
+    <Compile Include="Action\Timed\DelayAction.cs" />
+    <Compile Include="Action\Timed\EndlessMoveByAction.cs" />
+    <Compile Include="Engine.cs" />
+    <Compile Include="Action\Instant\InstantAction.cs" />
+    <Compile Include="LineBatch.cs" />
+    <Compile Include="LineNode.cs" />
+    <Compile Include="Action\Timed\MoveByAction.cs" />
+    <Compile Include="Action\Timed\MoveToAction.cs" />
+    <Compile Include="Node.cs" />
+    <Compile Include="OBB.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RangeF.cs" />
+    <Compile Include="Extensions\RectangleExtensions.cs" />
+    <Compile Include="Action\Timed\RotateByAction.cs" />
+    <Compile Include="Action\Timed\RotateToAction.cs" />
+    <Compile Include="Action\Timed\ScaleByAction.cs" />
+    <Compile Include="Action\Timed\ScaleToAction.cs" />
+    <Compile Include="Transition\Scene.cs" />
+    <Compile Include="Transition\SceneTransition.cs" />
+    <Compile Include="Action\Timed\SequenceAction.cs" />
+    <Compile Include="Sprite.cs" />
+    <Compile Include="SpriteAnimation.cs" />
+    <Compile Include="SpriteNode.cs" />
+    <Compile Include="TextNode.cs" />
+    <Compile Include="Action\Timed\TimedAction.cs" />
+    <Compile Include="Transition\TransitionCrossFade.cs" />
+    <Compile Include="Transition\TransitionFade.cs" />
+    <Compile Include="Transition\TransitionShrink.cs" />
+    <Compile Include="Transition\TransitionShrinkGrow.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="MonoGame.Framework">
+      <HintPath>..\packages\MonoGame-Portable.3.2.1\lib\portable-net4+sl4+wp8+win8\MonoGame.Framework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Changes.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
