@@ -13,13 +13,14 @@ namespace WrenchMG
 {
     public class Node
     {
+		#region Members
         protected ActionManager actionMgr = new ActionManager();
-
-        public Vector2 Position = Vector2.Zero;
-        public float Scale = 1.0f;
-        public float Rotation = 0.0f;
-		public Scene scene = null;
-		public Color DrawColor = Color.White;
+		protected Vector2 m_Position = Vector2.Zero;
+		protected float m_Scale = 1.0f;
+		protected float m_Rotation = 0.0f;
+		protected Scene m_Scene = null;
+		protected Color m_DrawColor = Color.White;
+		#endregion
 
         public Node()
         {
@@ -70,5 +71,32 @@ namespace WrenchMG
         {
             actionMgr.ClearActions();
         }
+
+		#region Properties
+		public Vector2 Position {
+			get { return m_Position; }
+			set { m_Position = value; }
+		}
+
+		public float Scale {
+			get { return m_Scale; }
+			set { m_Scale = value; }
+		}
+
+		public float Rotation {
+			get { return m_Rotation; }
+			set { m_Rotation = value; }
+		}
+
+		public Scene Scene {
+			get { return this.m_Scene; }
+			set { this.m_Scene = value; }
+		}
+
+		public Color DrawColor {
+			get { return m_DrawColor; }
+			set { m_DrawColor = value; }
+		}
+		#endregion
     }
 }

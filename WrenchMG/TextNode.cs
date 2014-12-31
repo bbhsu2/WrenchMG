@@ -9,30 +9,43 @@ namespace WrenchMG
 {
     public class TextNode : Node
     {
-        public SpriteFont spriteFont = null;
-        public Color color = Color.Black;
-        public string text = "";
+		#region Members
+		protected SpriteFont m_SpriteFont = null;
+        protected string m_Text = "";
+		#endregion
 
         public TextNode(Vector2 position)
             : base(position, 1.0f, 0.0f) { }
 
-        public TextNode(SpriteFont nSpriteFont, string Text, Color nColor, Vector2 position)
+        public TextNode(SpriteFont nSpriteFont, string text, Color nColor, Vector2 position)
             : base(position, 1.0f, 0.0f)
         {
-            spriteFont = nSpriteFont;
-            text = Text;
-            color = nColor;
+            Font = nSpriteFont;
+            Text = text;
+            DrawColor = nColor;
         }
 
         public override void Draw(SpriteBatch sb)
         {
-            sb.DrawString(spriteFont, text, Position, color);
+            sb.DrawString(Font, Text, Position, DrawColor);
         }
 
         public override Rectangle Bounds()
         {
-            Vector2 size = spriteFont.MeasureString(text);
+            Vector2 size = Font.MeasureString(Text);
             return new Rectangle((int)Position.X, (int)Position.Y, (int)size.X, (int)size.Y);
         }
+
+		#region Properties
+		public SpriteFont Font {
+			get { return m_SpriteFont; }
+			set { m_SpriteFont = value; }
+		}
+
+		public string Text {
+			get { return m_Text; }
+			set { m_Text = value; }
+		}
+		#endregion
     }
 }

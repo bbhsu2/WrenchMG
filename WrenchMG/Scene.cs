@@ -51,7 +51,7 @@ namespace WrenchMG
         {
             if (n != null)
             {
-                n.scene = this;
+                n.Scene = this;
                 nodesToAdd.Add(n);
             }
             return n;
