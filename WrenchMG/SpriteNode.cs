@@ -42,19 +42,21 @@ namespace WrenchMG
 				this.Sprite.Draw(sb, Position, Scale, Rotation, DrawColor);
         }
 
-        public override Rectangle Bounds()
+		#region Properties
+        public override Rectangle Bounds
         {
-			Rectangle r = this.Sprite.Bounds();
+			get{
+				Rectangle r = this.Sprite.Bounds;
 
-            r.X = (int)(Scale * r.X);
-            r.Y = (int)(Scale * r.Y);
-            r.Width = (int)(Scale * r.Width);
-            r.Height= (int)(Scale * r.Height);
+				r.X = (int)(Scale * r.X);
+				r.Y = (int)(Scale * r.Y);
+				r.Width = (int)(Scale * r.Width);
+				r.Height = (int)(Scale * r.Height);
 
-            return new Rectangle(r.X + (int)Position.X, r.Y + (int)Position.Y, r.Width, r.Height);
+				return new Rectangle (r.X + (int)Position.X, r.Y + (int)Position.Y, r.Width, r.Height);
+			}
         }
 
-		#region Properties
 		public Sprite Sprite {
 			get { return m_Sprite; }
 			set { m_Sprite = value; }

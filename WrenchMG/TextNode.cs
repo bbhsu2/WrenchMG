@@ -30,13 +30,15 @@ namespace WrenchMG
             sb.DrawString(Font, Text, Position, DrawColor);
         }
 
-        public override Rectangle Bounds()
-        {
-            Vector2 size = Font.MeasureString(Text);
-            return new Rectangle((int)Position.X, (int)Position.Y, (int)size.X, (int)size.Y);
-        }
-
 		#region Properties
+		public override Rectangle Bounds
+		{
+			get {
+				Vector2 size = Font.MeasureString (Text);
+				return new Rectangle ((int)Position.X, (int)Position.Y, (int)size.X, (int)size.Y);
+			}
+		}
+
 		public SpriteFont Font {
 			get { return m_SpriteFont; }
 			set { m_SpriteFont = value; }

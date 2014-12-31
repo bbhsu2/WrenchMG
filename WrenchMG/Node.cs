@@ -46,17 +46,6 @@ namespace WrenchMG
             actionMgr.Update(gameTime);
         }
 
-        virtual public Rectangle Bounds()
-        {
-            return new Rectangle((int)Position.X, (int)Position.Y, 0, 0);
-        }
-
-		virtual public OBB OrientedBounds()
-		{
-			Rectangle b = Bounds ();
-			return new OBB (new Vector2 (b.Center.X, b.Center.Y), Rotation, new Vector2 (b.Width / 2.0f, b.Height / 2.0f));
-		}
-
         virtual public void AddAction(Action a)
         {
             actionMgr.AddAction(a);
@@ -73,6 +62,19 @@ namespace WrenchMG
         }
 
 		#region Properties
+		virtual public Rectangle Bounds
+		{
+			get { return new Rectangle ((int)Position.X, (int)Position.Y, 0, 0); }
+		}
+
+		virtual public OBB OrientedBounds
+		{
+			get {
+				Rectangle b = Bounds;
+				return new OBB (new Vector2 (b.Center.X, b.Center.Y), Rotation, new Vector2 (b.Width / 2.0f, b.Height / 2.0f));
+			}
+		}
+
 		public Vector2 Position {
 			get { return m_Position; }
 			set { m_Position = value; }

@@ -13,41 +13,59 @@ namespace WrenchMG
 {
     public class Sprite
     {
-        public Texture2D texture;
-        Rectangle coords;
-        Vector2 origin;
+        Texture2D m_Texture;
+        Rectangle m_Coords;
+        Vector2 m_Origin;
 
 		public Sprite(string filename)
 		{
-			texture = Engine.ContentMgr.Load<Texture2D> (filename);
+			this.Texture = Engine.ContentMgr.Load<Texture2D> (filename);
 
-			coords = new Rectangle(0, 0, texture.Width, texture.Height);
-			origin = new Vector2(coords.Width / 2, coords.Height / 2);
+			Coordinates = new Rectangle(0, 0, Texture.Width, Texture.Height);
+			Origin = new Vector2(Coordinates.Width / 2, Coordinates.Height / 2);
 		}
 
         public Sprite(Texture2D nTexture, Rectangle? nCoords = null, Vector2? nOrigin = null)
         {
-            texture = nTexture;
+            Texture = nTexture;
 
             if(nCoords.HasValue)
-                coords = nCoords.Value;
+				Coordinates = nCoords.Value;
             else
-                coords = new Rectangle(0, 0, texture.Width, texture.Height);
+				Coordinates = new Rectangle(0, 0, Texture.Width, Texture.Height);
 
             if(nOrigin.HasValue)
-                origin = nOrigin.Value;
+                Origin = nOrigin.Value;
             else
-                origin = new Vector2(coords.Width / 2, coords.Height / 2);
+				Origin = new Vector2(Coordinates.Width / 2, Coordinates.Height / 2);
         }
 
 		public virtual void Draw(SpriteBatch spriteBatch, Vector2 position, float scale, float rotation, Color c)
         {
-            spriteBatch.Draw(texture, position, coords, c, rotation, origin, scale, SpriteEffects.None, 0.0f);
+			spriteBatch.Draw(Texture, position, Coordinates, c, rotation, Origin, scale, SpriteEffects.None, 0.0f);
         }
 
-        public virtual Rectangle Bounds()
+		#region Properties
+        public virtual Rectangle Bounds
         {
-            return new Rectangle(-(int)origin.X, -(int)origin.Y, coords.Width, coords.Height);
+			get { return new Rectangle (-(int)Origin.X, -(int)Origin.Y, Coordinates.Width, Coordinates.Height); }
         }
+
+		public Texture2D Texture {
+			get { return m_Texture; }
+			set { m_Texture = value; }
+		}
+
+		public Rectangle Coordinates {
+			get { return m_Coords; }
+			set { m_Coords = value; }
+		}
+
+		public Vector2 Origin {
+			get { return m_Origin; }
+			set { m_Origin = value; }
+		}
+
+		#endregion
     }
 }
