@@ -13,10 +13,12 @@ namespace WrenchMG
 {
     public class Scene
     {
+		#region Members
         public SpriteBatch spriteBatch;
         List<Node> nodes = new List<Node>();
 		List<Node> nodesToAdd = new List<Node> ();
 		List<Node> nodesToRemove = new List<Node> ();
+		#endregion
 
         public Scene()
         {
@@ -35,8 +37,9 @@ namespace WrenchMG
 
         public virtual void Update(GameTime gameTime)
         {
-			foreach (Node n in nodesToRemove)
+			foreach (Node n in nodesToRemove) {
 				nodes.Remove (n);
+			}
 			nodesToRemove.Clear ();
 
 			foreach (Node n in nodesToAdd)
@@ -59,12 +62,17 @@ namespace WrenchMG
 
         public virtual void RemoveNode(Node n)
         {
-            nodesToRemove.Add(n);
+			if (n != null) {
+				n.Scene = null;
+				nodesToRemove.Add (n);
+			}
         }
 
-        public List<Node> Nodes()
+		#region Properties
+        public List<Node> Nodes
         {
-            return nodes;
+			get { return nodes; }
         }
+		#endregion
     }
 }
