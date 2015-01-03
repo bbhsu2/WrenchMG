@@ -41,5 +41,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)TransitionFade.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TransitionShrink.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TransitionShrinkGrow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Gradient.cs" />
   </ItemGroup>
 </Project>
